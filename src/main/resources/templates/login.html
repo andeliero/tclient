@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8" />
+    <title>Tclient - Login Page</title>
+    <meta name="author" content="AA"/>
+</head>
+<body>
+<h1>Login Page</h1>
+<form method="post" th:action="@{login}">
+    <input type="text" id="username" name="username" value="" placeholder="Username"/>
+    <input type="password" id="password" name="password" value="" placeholder="Password" />
+    <div th:if="${param.error}">Nome utente e/o password errati!</div>
+    <input type="submit" />
+</form>
+</body>
+</html>
