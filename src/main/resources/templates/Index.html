@@ -7,7 +7,23 @@
     <meta name="author" content="AA"/>
 </head>
 <body>
-<h1>CIAONE</h1>
-<a th:href="@{logout}">Logout</a>
+<header>
+    <h1>tClient</h1>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Esci" id="LO" />
+    </form>
+</header>
+<main>
+    <div th:if="${contenuti.size()} == 0">Nessun contenuto presente</div>
+    <ul>
+        <li th:each="con : ${contenuti}">
+            <span th:if="${con instanceof T(it.tclient.model.ImageContent)}" th:text="[IMAGE]" ></span>
+            <span th:if="${con instanceof T(it.tclient.model.PageletContent)}" th:text="[PAGELET]" ></span>
+            <a th:href="${#strings.concat('/viewContent/' , con.getId() ) }">
+                <!--<img th:if="${!con.getThumb().isEmpty()}" th:src="${con.getThumb()}"/>--><span th:text="${con.getTitle()}"></span>
+            </a>
+        </li>
+    </ul>
+</main>
 </body>
 </html>

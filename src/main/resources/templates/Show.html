@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Tclient</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="AA"/>
+</head>
+<body>
+<header>
+    <h1>tClient</h1>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Esci" id="LO" />
+    </form>
+    <h2>Visualizzazione in dettaglio</h2>
+    <a href="/index">Index</a>
+</header>
+<main>
+    <h1><span th:text="${content.getTitle()}"></span></h1>
+    <h2>Autore: <span th:text="${content.getAuthor()}"></span> Data: <span th:text="${content.getCreationDate()}"></span> </h2>
+    <img th:if="${!content.getThumb().isEmpty()}" th:src="${content.getThumb()}"/>
+    <span th:text="${content.getDescription()}"/>
+</main>
+
+</body>
+</html>
